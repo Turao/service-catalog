@@ -2,7 +2,7 @@ kind: ServiceAccount
 apiVersion: v1
 metadata:
   name: pre-migration-job-account
-  namespace: {{ .Release.Namespace }}
+  # namespace: {{ .Release.Namespace }}
   labels:
     migration-job: "true"
     app: {{ template "fullname" . }}-pre-migration-job
