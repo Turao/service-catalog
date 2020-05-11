@@ -10,8 +10,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
-    "helm.sh/hook": pre-upgrade
-    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
+    helm.sh/hook: pre-upgrade
+    helm.sh/resource-policy: keep
 
 ---
 kind: ClusterRole
@@ -25,8 +25,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
-    "helm.sh/hook": pre-upgrade
-    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
+    helm.sh/hook: pre-upgrade
+    helm.sh/resource-policy: keep
 rules:
   - apiGroups: ["apps"]
     resources: ["deployments"]
@@ -61,8 +61,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
-    "helm.sh/hook": pre-upgrade
-    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
+    helm.sh/hook: pre-upgrade
+    helm.sh/resource-policy: keep
 subjects:
   - kind: ServiceAccount
     name: pre-migration-job-account
@@ -84,7 +84,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
-    "helm.sh/hook": pre-upgrade
+    helm.sh/hook: pre-upgrade
+    helm.sh/resource-policy: keep
 spec:
   accessModes:
     - ReadWriteOnce
@@ -104,8 +105,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
-    "helm.sh/hook": pre-upgrade
-    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
+    helm.sh/hook: pre-upgrade
+    helm.sh/resource-policy: keep
 spec:
   backoffLimit: 1
   template:
